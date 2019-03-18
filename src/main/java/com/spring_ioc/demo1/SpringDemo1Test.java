@@ -7,7 +7,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * @Auther: 梓
  * @Date: 2019/3/18 14:33
- * @Description: Spring_IOC
+ * @Description:
+ *          IOC 反转控制
+ *              将需要手动[创建]的对象的控制权交给Spring框架管理.
+ *          DI 依赖注入
+ *              在spring创建这个对象的过程中,将这个对象所依赖的[属性]注入进去
  */
 public class SpringDemo1Test {
 
@@ -16,8 +20,12 @@ public class SpringDemo1Test {
     * 传统方式开发 有耦合
     */
    public void demo1(){
-    UserService userService = new UserServiceImpl();
-    userService.sayHello();
+    //    UserService userService = new UserServiceImpl();
+    //    userService.sayHello();
+
+    UserServiceImpl userService1 = new UserServiceImpl();
+    userService1.setName("张三");
+    userService1.sayHello();
    }
 
    @Test
@@ -32,5 +40,7 @@ public class SpringDemo1Test {
        UserService userService = (UserService) applicationContext.getBean("UserServiceImplXml");
        userService.sayHello();
     }
+
+
 
 }

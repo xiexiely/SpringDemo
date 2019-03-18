@@ -7,8 +7,19 @@ package com.spring_ioc.demo1;
  */
 public class UserServiceImpl implements UserService {
 
+    //添加属性
+    private String name;
 
+    @Override
     public void sayHello() {
-        System.out.println("hello spring_ioc");
+        System.out.println("hello spring_ioc"+ name );
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

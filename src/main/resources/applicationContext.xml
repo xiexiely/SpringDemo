@@ -4,6 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--UserService的创建权交给了Spring-->
-    <bean id="UserServiceImplXml" class="com.spring_ioc.demo1.UserServiceImpl"></bean>
+    <bean id="UserServiceImplXml" class="com.spring_ioc.demo1.UserServiceImpl">
+        <!--依赖注入 DI 设置属性-->
+        <property name="name" value="李四"/>
+    </bean>
 
 </beans>
