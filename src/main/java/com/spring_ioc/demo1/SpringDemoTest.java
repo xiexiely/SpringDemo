@@ -1,8 +1,12 @@
 package com.spring_ioc.demo1;
 
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 /**
  * @Auther: 梓
@@ -13,15 +17,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *          DI 依赖注入
  *              在spring创建这个对象的过程中,将这个对象所依赖的[属性]注入进去
  */
-public class SpringDemo1Test {
+public class SpringDemoTest {
 
    @Test
    /**
     * 传统方式开发 有耦合
     */
    public void demo1(){
-    //    UserService userService = new UserServiceImpl();
-    //    userService.sayHello();
+
+//    UserService userService = new UserServiceImpl();
+//    userService.sayHello();
 
     UserServiceImpl userService1 = new UserServiceImpl();
     userService1.setName("张三");
@@ -41,6 +46,25 @@ public class SpringDemo1Test {
        userService.sayHello();
     }
 
+    @Test
+    /**
+     * Spring 读取磁盘系统中的配置文件
+     */
+    public void demo3(){
+        ApplicationContext applicationContext = new FileSystemXmlApplicationContext("d:\\applicationContext.xml");
+        UserService userService = (UserService) applicationContext.getBean("UserServiceImplXml");
+        userService.sayHello();
+    }
+
+    @Test
+    /**
+     * 传统方式的工厂类 beanFactory
+     */
+    public void demo4(){
+        BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("applicationContext.xml"));
+        UserService userService = (UserService)beanFactory.getBean("UserServiceImplXml");
+        userService.sayHello();
+    }
 
 
 }
