@@ -17,4 +17,14 @@
         <!--第三种:实例工厂的方式-->
     <bean id="bean3" factory-bean="bean3Factory" factory-method="createBean3"/>
     <bean id="bean3Factory" class="com.spring_bean.Bean3Factory"/>
+
+
+    <!--常用Bean的配置-->
+        <!--多例-->
+    <bean id="personPrototype" class="com.spring_bean_range.Person" scope="prototype"></bean>
+        <!--单例-->
+    <bean id="personSingleton" class="com.spring_bean_range.Person" scope="singleton"></bean>
+
+    <!--生命周期-->
+    <bean id="man" class="com.spring_bean_range.Man" init-method="setup" destroy-method="teardown"/>
 </beans>
